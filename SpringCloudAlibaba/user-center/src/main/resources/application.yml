@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/user_center?serverTimezone=GMT
+    hikari:
+      username: root
+      password: 123456
+      #>= 6.x com.mysql.cj.jdbc.Driver
+      #<= 5.x com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        metadata:
+          instance: c
+          haha: hehe
+          version: v1
+          k: v1
+  #        # 指定namespace
+#        namespace: 15afa05f-01d0-44cb-8eef-2fc7b9b87aa1
+#        # 指定集群名称 假设用户中心机房在南京
+        cluster-name: BJ
+  application:
+    # 服务名称尽量用-，不要用_，不要用特殊字符
+    name: user-center
+server:
+  port: 8083
