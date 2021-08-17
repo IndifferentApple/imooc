@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
  * 2. 用法
  * @RequiredArgsConstructor(onConstructor =@_(@Autowired)) 写在类上可以代替@AutoWired注解，
  */
-@RequiredArgsConstructor(onConstructor = @_(@Autowired))
+@RequiredArgsConstructor(onConstructor=@__(@Autowired))
 public class UserService {
     private final UserMapper userMapper;
 

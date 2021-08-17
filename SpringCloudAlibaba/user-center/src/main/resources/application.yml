@@ -15,7 +15,7 @@ spring:
           instance: c
           haha: hehe
           version: v1
-          k: v1
+          k: v2
   #        # 指定namespace
 #        namespace: 15afa05f-01d0-44cb-8eef-2fc7b9b87aa1
 #        # 指定集群名称 假设用户中心机房在南京
