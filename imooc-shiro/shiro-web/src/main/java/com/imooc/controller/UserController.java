@@ -4,6 +4,7 @@ import com.imooc.vo.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
@@ -35,15 +36,36 @@ public class UserController {
         return "无admin权限";
     }
 
-    @RequiresRoles("admin")
+    /**
+     *
+     * @return
+     */
+    //验证用户角色
+//    @RequiresRoles("admin")
     @RequestMapping(value = "/testRole",method = RequestMethod.GET)
+    @ResponseBody
     public String testRole(){
         return "testRole success";
     }
 
-    @RequiresRoles("admin1")
+//    @RequiresRoles("admin1")
+    //验证用户权限
+//    @RequiresPermissions("user:add")
     @RequestMapping(value = "/testRole1",method = RequestMethod.GET)
+    @ResponseBody
     public String testRole1(){
-        return "testRole success";
+        return "testRole1 success";
+    }
+
+    @RequestMapping(value = "/testPerms",method = RequestMethod.GET)
+    @ResponseBody
+    public String testPerms(){
+        return "testPerms success";
+    }
+
+    @RequestMapping(value = "/testPerms1",method = RequestMethod.GET)
+    @ResponseBody
+    public String testPerms1(){
+        return "testPerms1 success";
     }
 }

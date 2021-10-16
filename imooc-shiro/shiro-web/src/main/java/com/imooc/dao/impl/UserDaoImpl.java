@@ -54,4 +54,17 @@ public class UserDaoImpl implements UserDao {
             }
         });
     }
+
+    @Override
+    public List<String> getPermissionsByUserName(String userName) {
+        String sql = "select permission from roles_permissions LEFT JOIN  user_roles on user_roles.role_name=roles_permissions.role_name where user_roles.username = ?";
+        return jdbcTemplate.query(sql,new String[]{userName},new RowMapper<String>(){
+
+            @Override
+            public String mapRow(ResultSet resultSet, int i) throws SQLException {
+                return resultSet.getString("permission");
+
+            }
+        });
+    }
 }

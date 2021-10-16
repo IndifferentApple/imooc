@@ -14,10 +14,20 @@
             <value>
                 /login.html = anon
                 /subLogin = anon
+<!--                /testRole = roles["admin"]-->
+                /testRole1 = rolesOr["admin","admin1]
+<!--                /testPerms = perms["user:delete"]-->
+<!--                /testPerms1 = perms["user:delete","user:update]-->
                 /* =authc
             </value>
         </property>
+        <property name="filters">
+            <map>
+                <entry key="rolesOr" value-ref="rolesOrFilter"/>
+            </map>
+        </property>
     </bean>
+    <bean class="com.imooc.filter.RolesOrFilter" id="rolesOrFilter"/>
     <bean class="org.apache.shiro.web.mgt.DefaultWebSecurityManager" id="securityManager">
         <property name="realm" ref="realm"/>
     </bean>
