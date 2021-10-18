@@ -35,6 +35,7 @@
         <property name="realm" ref="realm"/>
         <property name="sessionManager" ref="sessionManager"/>
         <property name="cacheManager" ref="cacheManager"/>
+        <property name="rememberMeManager" ref="cookieRememberMeManager"/>
     </bean>
     <bean class="com.imooc.shiro.realm.CustomRealm" id="realm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
@@ -52,4 +53,14 @@
     <bean class="com.imooc.session.RedisSessionDao" id="redisSessionDao"/>
 
     <bean class="com.imooc.cache.RedisCacheManager" id = "cacheManager"/>
+
+    <!-- 自动登录 -->
+    <bean class="org.apache.shiro.web.mgt.CookieRememberMeManager" id="cookieRememberMeManager">
+        <property name="cookie" ref="cookie"/>
+    </bean>
+
+    <bean class="org.apache.shiro.web.servlet.SimpleCookie" id="cookie">
+        <constructor-arg name="name" value="rememberMe"/>
+        <property name="maxAge" value="20000000"/>
+    </bean>
 </beans>
